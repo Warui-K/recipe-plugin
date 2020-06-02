@@ -29,9 +29,11 @@
 
  //Includes Section
  include('includes/activate.php');
+ include('includes/init.php');
+
 
 
  //Hooks Section
- register_activatiob_hook(__FILE__, 'r_activate_plugin');
-
+ register_activation_hook(__FILE__, 'r_activate_plugin');
+add_action('init', 'recipe_init');
  //Shortcodes
