@@ -25,13 +25,16 @@
   * Plugin activation
 */
  //Setup Section
-
+/**Define a constant for referencing the plugin file */
+define('RECIPE_PLUGIN_URL', __FILE__);
 
  //Includes Section
  include('includes/activate.php');
  include('includes/init.php');
  include('process/save-post.php');
  include('process/filter-content.php');
+ include('includes/front/enqueue.php');
+
 
 
 
@@ -42,5 +45,8 @@
   add_action('init', 'recipe_init');
   add_action('save_post_recipe', 'r_save_post_admin', 10, 3);
   add_filter('the_content', 'r_filter_recipe_content');
+
+  //Enqueue 
+  add_action('wp_enqueue_sctipts', 'r_enqueue_scripts', 100);
 
   //Shortcodes
